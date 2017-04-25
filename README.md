@@ -20,6 +20,8 @@ Os exercícios são:
    - Fazer o exercício no arquivo `starwars.js`
 1. Fazer com que, ao clicar em um filme, uma chamada AJAX seja feita para
    pegar os detalhes do filme e, então, atualizar o texto introdutório
+1. Salvar, em `localStorage`, qual foi o último filme visualizado e, quando
+   a página for carregada, mostrar esse filme
 1. _Extra_: buscar e colocar um áudio na página (você sabe qual!!!)
 
 
