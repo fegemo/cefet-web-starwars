@@ -1,0 +1,66 @@
+html, body, .container {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-color: black;
+  background-image: url(imgs/stars.gif);
+}
+
+.container {
+  perspective: 200px;
+  perspective-origin: 50% 0;
+  text-align: center;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 16%);
+  mask-image: linear-gradient(to bottom, transparent, black 16%);
+}
+
+.flow {
+  transform-origin: 50% 0%;
+  transform-style: preserve-3d;
+  transform: rotateX(75deg);
+}
+
+.flow > pre {
+  font-family: "Arial", sans-serif;
+  color: #ffd61d;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.1em;
+}
+
+.reading-animation {
+  animation: reading 50s linear 0s infinite forwards;
+}
+
+@keyframes reading {
+  from {
+    transform: translate3d(0, 0px, -200px);
+  }
+  to {
+    transform: translate3d(0, -115%, -200px);
+  }
+}
+
+#movies {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 1;
+  color: white;
+}
+
+#movies li {
+  list-style-type: none;
+  padding-right: 20px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+#movies li:hover {
+  color: cornflowerblue;
+  text-decoration: underline;
+}
