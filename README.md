@@ -17,7 +17,12 @@ Os exercícios são:
    - Posso não usar jQuery? Veja o [FAQ](#faq)
 1. Fazer uma chamada AJAX para recuperar a lista de filmes e preencher o
    `<nav id="movies">...</nav>`
-   - Fazer o exercício no arquivo `starwars.js`
+   <!-- - Fazer o exercício no arquivo `starwars.js`
+   - Está tendo o seguinte erro?
+     ```
+
+     ```
+     - Veja o _slide_ oculto sobre [configurar um servidor local][setup-local-server] -->
 1. Fazer com que, ao clicar em um filme, uma chamada AJAX seja feita para
    pegar os detalhes do filme e, então, atualizar o texto introdutório
 1. Salvar, em `localStorage`, qual foi o último filme visualizado e, quando
@@ -33,30 +38,31 @@ Os exercícios são:
     [prototype.js][prototype], [MooTools][mootools], [YUI][yui] etc. Mas bom
     mesmo é JavaScript =)
 1. O que é esse `"data-episode-url"` em `<li data-episode-url="...">...</li>`?
-  - Em HTML, podemos "criar" novos atributos com o nome e o valor que quisermos
-    - Tipicamente, damos o nome desses novos atributos de `data-algumacoisa`,
-      para informar que ele é um atributo "de dados" e não um atributo
-      padrão do HTML
-    - Para recuperar o valor de um _data attribute_:
-      ```html
-      <button id="b" data-sorriso=":D">Me dê um sorriso</button>
-      ```
-      - Podemos:
-        ```js
-        let sorrisoEl = document.querySelector('#b');
-        window.alert(sorrisoEl.getAttribute('data-sorriso'));
-        ```
-      - Ou então, se estiver usando atributos que começam com `data-`:
-        ```js
-        let sorrisoEl = document.querySelector('#b');
-        window.alert(sorrisoEl.dataset.sorriso);
-        ```
-  - Neste caso, **uma ideia é colocar a URL da chamada AJAX a ser feita** para
-    recuperar os detalhes daquele episódio
-    - E quando o elemento for "clicado", recuperar a URL e fazer a chamada AJAX
+   - Em HTML, podemos "criar" novos atributos com o nome e o valor que quisermos
+     - Tipicamente, damos o nome desses novos atributos de `data-algumacoisa`,
+       para informar que ele é um atributo "de dados" e não um atributo
+       padrão do HTML
+     - Para recuperar o valor de um _data attribute_:
+       ```html
+       <button id="b" data-sorriso=":D">Me dê um sorriso</button>
+       ```
+       - Podemos:
+         ```js
+         let sorrisoEl = document.querySelector('#b');
+         window.alert(sorrisoEl.getAttribute('data-sorriso'));
+         ```
+       - Ou então, se estiver usando atributos que começam com `data-`:
+         ```js
+         let sorrisoEl = document.querySelector('#b');
+         window.alert(sorrisoEl.dataset.sorriso);
+         ```
+   - Neste caso, **uma ideia é colocar a URL da chamada AJAX a ser feita** para
+     recuperar os detalhes daquele episódio
+     - E quando o elemento for "clicado", recuperar a URL e fazer a chamada AJAX
 
 
 
 [prototype]: http://prototypejs.org/
 [mootools]: https://mootools.net/
 [yui]: https://yuilibrary.com/
+[setup-local-server]: https://fegemo.github.io/cefet-web/classes/js4/#setup-local-server
