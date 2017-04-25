@@ -59,10 +59,15 @@ Os exercícios são:
    - Neste caso, **uma ideia é colocar a URL da chamada AJAX a ser feita** para
      recuperar os detalhes daquele episódio
      - E quando o elemento for "clicado", recuperar a URL e fazer a chamada AJAX
-
+1. Como fazer chamadas AJAX?
+   - Veja nos [slides sobre AJAX][ajax]
+1. Como usar o `localStorage`?
+   - Veja nos [slides sobre Web Storage][web-storage]
 
 
 [prototype]: http://prototypejs.org/
 [mootools]: https://mootools.net/
 [yui]: https://yuilibrary.com/
 [setup-local-server]: https://fegemo.github.io/cefet-web/classes/js4/#setup-local-server
+[ajax]: https://fegemo.github.io/cefet-web/classes/js4/#ajax
+[web-storage]: https://fegemo.github.io/cefet-web/classes/js4/#web-storage
