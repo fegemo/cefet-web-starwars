@@ -1,49 +1,46 @@
 // Seu javascript aqui :)
-// Use a Star Wars API: https://swapi.co/
+// Use a Star Wars API: https://swapi.dev/
 // para fazer uma requisição assíncrona e:
 //  - Pegar a lista de filmes (AJAX) e preencher no HTML
 //  - Quando um filme for clicado, exibir sua introdução
+import { restartAnimation } from './restart-animation.js'
+import { toRoman  } from './roman.js'
+import { friendlyFetch } from './friendly-fetch.js'
+import { play } from './music.js'
 
-const apiEndpoint = 'https://swapi.co/api/';
-
-function toRoman(str) {
-  return {
-    '1': 'I',
-    '2': 'II',
-    '3': 'III',
-    '4': 'IV',
-    '5': 'V',
-    '6': 'VI',
-    '7': 'VII',
-    '8': 'VIII',
-    '9': 'IX',
-    '10': 'X',
-    '11': 'XI',
-    '12': 'XII'
-  }[str];
-}
-let movies = null;
+const API_ENDPOINT = 'https://swapi.dev/api'
+const introEl = document.querySelector('.introducao')
+const moviesEl = document.querySelector('#filmes ul');
 
 function loadMovieIntro({ episode_id, title, opening_crawl }) {
-  $('.flow > pre').html(`
-    Episode ${toRoman(episode_id)}
+  introEl.innerHTML = `Episode ${toRoman(episode_id)}
     ${title.toUpperCase()}
-    ${opening_crawl}`);
+
+    ${opening_crawl}`
+  restartAnimation(introEl)
 }
 
-function loadMovies(response) {
-  const $movies = $('#movies ul');
-  $movies.empty();
+function loadMovies(movies) {
+  moviesEl.innerHTML = ''
 
-  movies = response.results.sort((a, b) => a.episode_id - b.episode_id);
-
-  movies.forEach(m => {
-    $movies.append(`<li data-episode_id="${m.episode_id}">Episode ${toRoman(m.episode_id)}</li>`);
-  });
-
-  $('#movies li').click(function(e) {
-    loadMovieIntro(movies.find(m => m.episode_id == e.currentTarget.dataset.episode_id));
-  });
+  movies
+    .sort((a, b) => a.episode_id - b.episode_id)
+    .forEach(m => {
+      const template = `<li>Episode ${toRoman(m.episode_id).padEnd(3, ' ')} - ${m.title}</li>`
+      const movieEl = document.createRange().createContextualFragment(template).firstElementChild
+      movieEl.addEventListener('click', () => loadMovieIntro(m))
+      moviesEl.appendChild(movieEl)
+    });
 }
 
-$.get(`${apiEndpoint}films/`, null, loadMovies);
+const movies = await friendlyFetch(`${API_ENDPOINT}/films/`)
+
+loadMovies(movies.results)
+
+const song = {
+  audioUrl: 'audio/tema-sw.mp3',
+  coverImageUrl: 'imgs/logo.svg',
+  title: 'Intro',
+  artist: 'John Williams'
+}
+play(song, document.body)
