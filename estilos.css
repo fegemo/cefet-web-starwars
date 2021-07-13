@@ -6,24 +6,23 @@ body {
   overflow: hidden;
   background-color: black;
   background-image: url(imgs/stars.gif);
+  font-family: "Arial", sans-serif;
 }
 
-.container {
+main {
   perspective: 200px;
   perspective-origin: 50% 0;
   text-align: center;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 16%);
   mask-image: linear-gradient(to bottom, transparent, black 16%);
 }
 
-.flow {
+.container-introducao {
   transform-origin: 50% 0%;
   transform-style: preserve-3d;
   transform: rotateX(75deg);
 }
 
-.flow > pre {
-  font-family: "Arial", sans-serif;
+.introducao {
   color: #ffd61d;
   font-weight: bold;
   font-size: 40px;
@@ -32,7 +31,7 @@ body {
   line-height: 1.1em;
 }
 
-.reading-animation {
+.introducao-animada {
   animation: reading 50s linear 0s infinite forwards;
 }
 
@@ -45,7 +44,7 @@ body {
   }
 }
 
-#movies {
+#filmes {
   position: absolute;
   left: 20px;
   top: 20px;
@@ -53,14 +52,15 @@ body {
   color: white;
 }
 
-#movies li {
+#filmes li {
   list-style-type: none;
   padding-right: 20px;
   cursor: pointer;
   font-family: 'Courier New', monospace;
+  white-space: pre;
 }
 
-#movies li:hover {
+#filmes li:hover {
   color: cornflowerblue;
   text-decoration: underline;
 }
