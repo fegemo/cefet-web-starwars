@@ -163,7 +163,7 @@ ordene os filmes de acordo com seu número, de forma que o primeiro
 seja o filme I.
 
 Em JavaScript, vetores possuem o método `v.sort(funcaoComparadora)`.
-Veja [a documentação de `v.sort()][array-sort] na MDN.
+Veja [a documentação de `v.sort()`][array-sort] na MDN.
 
 
 ### Opcional 5: `fetch` com cache no `localStorage`
