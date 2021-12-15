@@ -34,9 +34,9 @@ musica.play()
 ```
 
 Você pode fazer isso, ou então usar um _music player_ prontinho, com interface
-gráfica pronta (veja os arquivos `music.js` e `music-sem-private.js`).
+gráfica pronta (dê uma lidinha no arquivo `music.js`).
 
-Ambos arquivos exportam uma única função que espera receber 2 parâmetros:
+Ele exporta uma única função `play(...)` que espera receber 2 parâmetros:
 
 1. Objeto com informações da música
    - URL do áudio: `audio/tema-sw.mp3`
@@ -45,17 +45,8 @@ Ambos arquivos exportam uma única função que espera receber 2 parâmetros:
    - Artista: John Williams
 1. Elemento HTML onde o _player_ será injetado (no caso, `document.body`)
 
-<details>
-   <summary>Por que 2 arquivos...</summary>
-
-   Ambos arquivos (`music.js` e `music-sem-private.js`) fazem a mesma coisa.
-   Contudo, `music.js` usa uma classe **com campos privados**, o que pode
-   não funcionar em todos os navegadores.
-
-   Caso não funcione no seu, use então o `music-sem-private.js`, que faz
-   exatamente a mesma coisa exceto que todos os membros e métodos da classe
-   são públicos (e, então, funcionará em qualquer navegador recente).
-</details>
+Ou seja, (a) importe essa função `play` do `music.js` no seu arquivo `starwars.js`
+e (b) invoque-a passando 2 argumentos referentes aos parâmetros especificados.
 
 
 ### Exercício 2: preencher lista de filmes
@@ -217,6 +208,7 @@ função `async`.
 
 Para lembrar como usar `localStorage`, veja os 
 [slides sobre Web Storage][slides-webstorage].
+
 
 ## FAQ
 
