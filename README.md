@@ -22,10 +22,15 @@ Veja [como incluir um módulo JS][slides-modulos]). Ele será
 o único arquivo incluído no `index.html`, porque os outros serão `import` ados
 dentro dele.
 
+Obs: o arquivo `starwars.js` ainda não foi incluído. A melhor forma
+para incluí-lo é no HEAD da página usando o atributo `defer`
+(para que comece a ser baixado o quanto antes, mas só seja executado
+depois do navegador terminar o _parsing_ da página).
+
 
 ### Exercício 1: player de música
 
-Vamos colocar uma música pra tocar (e você sabe qual). Via JavaScript, pôr uma
+Vamos colocar certa música pra tocar (e você sabe qual). Via JavaScript, pôr uma
 música pra tocar é tão simples quanto:
 
 ```js
@@ -36,17 +41,19 @@ musica.play()
 Você pode fazer isso, ou então usar um _music player_ prontinho, com interface
 gráfica pronta (dê uma lidinha no arquivo `music.js`).
 
-Ele exporta uma única função `play(...)` que espera receber 2 parâmetros:
+Ele exporta uma função `play(...)` que espera receber 2 parâmetros:
 
-1. Objeto com informações da música
+1. Objeto com informações da música:
    - URL do áudio: `audio/tema-sw.mp3`
    - URL da capa: `imgs/logo.svg`
    - Título: Intro
    - Artista: John Williams
 1. Elemento HTML onde o _player_ será injetado (no caso, `document.body`)
 
-Ou seja, (a) importe essa função `play` do `music.js` no seu arquivo `starwars.js`
-e (b) invoque-a passando 2 argumentos referentes aos parâmetros especificados.
+Ou seja, (a) importe essa função `play` do `music.js` no seu 
+arquivo `starwars.js` e (b) invoque-a passando 2 argumentos referentes
+aos parâmetros especificados. Para saber os nomes das propriedades
+do 1º parâmetro, veja a assinatura da função `play` em `music.js`.
 
 
 ### Exercício 2: preencher lista de filmes
