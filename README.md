@@ -154,6 +154,36 @@ o conteúdo de `pre.introducao` conforme definido, para reiniciar a animação
 (texto comece a subir novamente), invoque a função de `restart-animation.js`.
 
 
+<details>
+   <summary>Como colocar evento de <code>'click'</code> ao <code>&lt;li&gt;</code> recém-criado?</summary>
+
+   Para tratar um evento (eg, `click`) de um elemento que estamos
+   criando dinamicamente, há diferentes opções:
+
+   1. **_Event delegation_** (não vimos em aula): em vez de registrar
+      o `click` em cada `<li>`, registramos no pai dele. Dentro
+      da função _handler_ do evento, perguntamos quem é o `evt.target`
+      (não confunda com `evt.currentTarget`¹). Verifica-se
+      se o `target` é um dos `<li>` da `<ul>` e, em caso afirmativo,
+      descobre-se de qual filme aquele `<li>` se refere. Isso pode ser feito,
+      por exemplo, por meio de atributos de dados colocados no `<li>`
+      (ie, `<li data-episode-id="...">`).
+   1. Inserir novo elemento usando **`document.createElement('li')`**:
+      quando usamos a "forma mais burocrática" para criar novos elementos,
+      podemos configurá-lo antes de inserí-lo na árvore. Ou seja,
+      podemos chamar `addEventListener(...)` no próprio `<li>`.
+   1. Inserir novo elemento criando um **fragmento de DOM**: nessa abordagem,
+      temos um _template_ (código HTML dentro de uma string do JavaScript) mas,
+      em vez de fazer `pai.innerHTML += template`, criamos um fragmento de DOM,
+      configuramos ele e, então, inserimos no DOM real.
+      Dessa forma podemos chamar `addEventListener(...)` em qualquer elemento
+      do _template_ antes que ele seja inserido do DOM oficial.
+
+
+   ¹`evt.target` vs `evt.currentTarget`: apesar de parecidos, essas propriedades podem ter valores diferentes. Enquanto `currentTarget` sempre aponta exatamente para o elemento em que registramos o evento (nesse caso, chamamos `addEventListener` na `#filmes ul`), o `target` pode ser um dos filhos/descendentes de quem sofreu o evento (ou seja, pode ser uma das `<li>`).
+</details>
+
+
 ### Opcional 4: filmes em ordem numérica
 
 Antes de inserir os elementos referentes a cada filme (as `li`s),
@@ -175,10 +205,10 @@ se já não possui a resposta no _cache_, evitando sobrecarregar a API de
 Star Wars. Crie essa função em um módulo `friendly-fetch.js`.
 
 Lembre-se que o Web Storage salva apenas strings, então você pode precisar
-serializar um objeto antes de salvar e também dessearializar depois que
+serializar um objeto antes de salvar e também dessearializar depois 
 que recuperar o valor salvo lá. Veja [slides sobre JSON][slides-json].
 
-É possível criar uma promessa diretamente ou por como valor de retorno de uma
+É possível criar uma promessa diretamente ou como valor de retorno de uma
 função `async`.
 
 <details>
@@ -206,7 +236,7 @@ função `async`.
    async function friendlyFetch(url) {
       // ...
       // executa algo assíncrono (eg, chama fetch(url))
-      // possivelmente aguardando o resultado dom await
+      // possivelmente aguardando o resultado do await
       // ...
       // retorna o resultado
    }
